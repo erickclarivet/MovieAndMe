@@ -1,0 +1,13 @@
+import { createStore } from 'redux';
+import toggleFavorite from './Reducers/favoriteReducer';
+import setAvatar from './Reducers/avatarReducer';
+import { persistCombineReducers } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+const rootPersistConfig = {
+    key: 'root',
+    storage: storage
+}
+
+export default createStore(persistCombineReducers(rootPersistConfig, {toggleFavorite, setAvatar}))
+// La func persist... permet de def plusieurs reducers et de persister les reducers (enregistrer les infos)
